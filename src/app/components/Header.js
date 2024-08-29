@@ -11,7 +11,7 @@ function Header() {
           <Image
             height={800}
             width={800}
-            src="frame.svg"
+            src="Frame.svg"
             alt="Logo"
             className="w-8"
             priority

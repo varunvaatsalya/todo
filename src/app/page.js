@@ -3,12 +3,10 @@
 import { Addnotes, Search } from "./components/svgs";
 import Editor from "./components/Editor";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { ImCross } from "react-icons/im";
 import { IoIosCreate } from "react-icons/io";
 import { FaPenToSquare } from "react-icons/fa6";
 import Header from "./components/Header";
-import { FaArrowLeft } from "react-icons/fa";
 
 export default function Home() {
   const [ToDoData, setToDoData] = useState(null);
@@ -16,7 +14,6 @@ export default function Home() {
   const [isSearch, setIsSearch] = useState(false);
   const [search, setSearch] = useState("");
   const [filteredTodos, setFilteredTodos] = useState([]);
-  // const router = useRouter();
 
   function todoUnShift() {
     if (todo) {
@@ -92,10 +89,10 @@ export default function Home() {
   useEffect(() => {}, [todo]);
 
   return (
-    <div className="w-full h-full bg-zinc-100 dark:bg-black">
+    <div className="w-full h-screen bg-zinc-100 dark:bg-black">
       <Header />
 
-      <div className="w-full px-4 md:px-16 lg:px-28 mt-8 md:mt-12 lg:mt-15 md:flex">
+      <div className=" w-full px-4 md:px-16 lg:px-28 mt-8 md:mt-12 lg:mt-15 md:flex">
         <div
           className={`${
             todo && "hidden"
@@ -135,7 +132,7 @@ export default function Home() {
           </div>
           <div
             key={todo}
-            className="w-full h-full flex flex-col justify-cente items-center"
+            className="w-full h-[500px] overflow-y-auto flex flex-col justify-cente items-center"
           >
             {filteredTodos && filteredTodos.length ? (
               filteredTodos.map((todo, key) => {
@@ -203,7 +200,6 @@ export default function Home() {
               <p className="text-3xl">Please Select Todo</p>
             </div>
           )}
-          {/* <Editor content={value} onChange={(value)=>{setValue(value)}}/> */}
         </div>
       </div>
     </div>

@@ -101,7 +101,7 @@ function Editor({ todo, deleteTodo, updateCurrentTodo, unSetCurrentTodo}) {
     editorProps: {
       attributes: {
         class:
-          "w-full min-h-80 max-h-[50vh] overflow-y-auto bg-white dark:bg-zinc-800 outline-none",
+          "w-full h-80 overflow-y-auto bg-white dark:bg-zinc-800 outline-none",
       },
     },
   });
@@ -191,9 +191,8 @@ function Editor({ todo, deleteTodo, updateCurrentTodo, unSetCurrentTodo}) {
   ];
 
   return (
-    <div className="h-full w-full ">
-      <div className="flex justify-center items-centerr ">
-        {/* <div className="font-medium text-3xl w-full">{"props.todo.title"}</div> */}
+    <div className="w-full ">
+      <div className="flex justify-center ">
         <div className="md:hidden cursor-pointer active:bg-black active:text-white dark:active:bg-white dark:active:text-zinc-800 h-10 w-12 py-2 px-3 flex justify-center items-center rounded-md mr-2 text-xl" onClick={unSetCurrentTodo}><FaArrowLeft/></div>
         <textarea
           className="font-medium text-3xl w-full outline-none bg-transparent h-12 "
@@ -205,8 +204,6 @@ function Editor({ todo, deleteTodo, updateCurrentTodo, unSetCurrentTodo}) {
             updateCurrentTodo(titleValue, descriptionValue);
           }}
         />
-        {/* {titleValue} */}
-        {/* </textarea> */}
 
         <div
           className={
@@ -217,7 +214,7 @@ function Editor({ todo, deleteTodo, updateCurrentTodo, unSetCurrentTodo}) {
           <Delete />
         </div>
       </div>
-      <div className="mb-2 w-full h-12 flex items-center gap-2">
+      <div className="mb-2 w-full flex flex-wrap items-center gap-2">
         {toolBars.map((toolbar, key) => {
           return (
             <div key={key} onClick={toolbar.clicked} className={decorateBg + (editor && editor.isActive(toolbar.pressed) ? activeBtn : "")}>
