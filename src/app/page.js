@@ -56,7 +56,7 @@ export default function Home() {
   }
 
   const fetchTodo = async () => {
-    let todoResult = await fetch(`${window.location.origin}/api/gettodo`);
+    let todoResult = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/gettodo`);
     todoResult = await todoResult.json();
     todoResult = todoResult.slice().reverse();
     setToDoData(todoResult);
@@ -67,7 +67,8 @@ export default function Home() {
   }, []);
 
   async function createTodo() {
-    let getTodoData = await fetch(`${window.location.origin}/api/createTodo`);
+    let getTodoData = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/createTodo`);
+    console.log(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/createTodo`)
     getTodoData = await getTodoData.json();
     if (getTodoData.todo) {
       setTodo(getTodoData.todo);
@@ -81,7 +82,7 @@ export default function Home() {
     );
     setTodo(null);
     let getTodoDeleteStatus = await fetch(
-      `${window.location.origin}/api/deleteTodo?id=${todo._id}`
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/deleteTodo?id=${todo._id}`
     );
     getTodoDeleteStatus = getTodoDeleteStatus.json();
     console.log(getTodoDeleteStatus.success);
@@ -154,7 +155,7 @@ export default function Home() {
                       )}
                     </div>
                     <div className="flex justify-between items-center font-light">
-                      <div className="line-clamp-2 text-xs py-1 w-60">
+                      <div className="line-clamp-2 text-xs py-1 w-56">
                         {todo.description ? (
                           extractContent(todo.description)
                         ) : (

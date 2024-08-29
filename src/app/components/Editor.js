@@ -49,7 +49,7 @@ function Editor({ todo, deleteTodo, updateCurrentTodo, unSetCurrentTodo}) {
       console.log(todo._id, titleValue, descriptionValue);
       try {
         // process.env.NEXT_PUBLIC_API_BASE_URLL
-        const response = await fetch(`${window.location.origin}/api/updateTodo`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/updateTodo`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
