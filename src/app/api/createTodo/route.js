@@ -20,6 +20,7 @@ export async function GET() {
         { message: "Todo saved successfully", todo: newTodo },
         { status: 201 }
       );
+      console.log(newTodo);
       response.headers.set(
         "Cache-Control",
         "no-store, no-cache, must-revalidate, proxy-revalidate"
