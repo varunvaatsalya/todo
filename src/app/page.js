@@ -72,6 +72,7 @@ export default function Home() {
     getTodoData = await getTodoData.json();
     if (getTodoData.todo) {
       setTodo(getTodoData.todo);
+      console.log(getTodoData.todo._id)
       setToDoData([getTodoData.todo, ...ToDoData]);
     }
   }
@@ -84,7 +85,7 @@ export default function Home() {
     let getTodoDeleteStatus = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/deleteTodo?id=${todo._id}`
     );
-    getTodoDeleteStatus = getTodoDeleteStatus.json();
+    getTodoDeleteStatus =await getTodoDeleteStatus.json();
     console.log(getTodoDeleteStatus.success);
   }
   useEffect(() => {}, [todo]);
