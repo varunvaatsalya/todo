@@ -67,7 +67,7 @@ export default function Home() {
   }, []);
 
   async function createTodo() {
-    let getTodoData = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/createTodo`, { cache: 'no-store' });
+    let getTodoData = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/createTodo`, {cache: 'no-store'});
     console.log(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/createTodo`)
     getTodoData = await getTodoData.json();
     if (getTodoData.todo) {
