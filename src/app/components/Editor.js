@@ -54,6 +54,7 @@ function Editor({ todo, deleteTodo, updateCurrentTodo, unSetCurrentTodo}) {
           headers: {
             "Content-Type": "application/json",
           },
+          cache: 'no-store' ,
           body: JSON.stringify({
             id: todo._id,
             title: titleValue,

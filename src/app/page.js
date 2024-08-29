@@ -56,7 +56,7 @@ export default function Home() {
   }
 
   const fetchTodo = async () => {
-    let todoResult = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/gettodo`);
+    let todoResult = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/gettodo`, { cache: 'no-store' });
     todoResult = await todoResult.json();
     todoResult = todoResult.slice().reverse();
     setToDoData(todoResult);
@@ -83,7 +83,7 @@ export default function Home() {
     );
     setTodo(null);
     let getTodoDeleteStatus = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/deleteTodo?id=${todo._id}`
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/deleteTodo?id=${todo._id}`, { cache: 'no-store' }
     );
     getTodoDeleteStatus =await getTodoDeleteStatus.json();
     console.log(getTodoDeleteStatus.success);
