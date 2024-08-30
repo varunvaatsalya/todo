@@ -1,9 +1,9 @@
 import { connectionSrt } from "@/lib/db";
-import { NextResponse } from "next/server";
+// import { res } from "next/server";
 import mongoose from "mongoose";
 import Todo from "@/lib/model";
 
-export async function GET() {
+export async function GET(req, res) {
   try {
     await mongoose.connect(connectionSrt);
     try {
@@ -16,7 +16,7 @@ export async function GET() {
         date: formattedDate,
       });
       await newTodo.save();
-      const response = NextResponse.json(
+      const response = res.json(
         { message: "Todo saved successfully", todo: newTodo },
         { status: 201 }
       );
@@ -31,13 +31,13 @@ export async function GET() {
       return response;
     } catch (error) {
       console.error("Error saving todos:", error);
-      return NextResponse.json(
+      return res.json(
         { message: "Failed to save todos" },
         { status: 500 }
       );
     }
   } catch (error) {
     console.error("Connection Error: ", error);
-    return NextResponse.json({ error: "Connection failed" });
+    return res.json({ error: "Connection failed" });
   }
 }
